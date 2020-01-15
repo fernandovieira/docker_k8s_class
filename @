@@ -1,0 +1,12 @@
+language: node_js 
+
+sudo: required
+services:
+   - docker
+
+before_install:
+   - docker build -t img-docker-react -f ./frontend/DockerFile.dev .
+
+script:     
+   - docker run -e CI=true mg-docker-react npm run test
+    
